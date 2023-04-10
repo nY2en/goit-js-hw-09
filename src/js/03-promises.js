@@ -21,7 +21,7 @@ function onInputChange(e) {
 function onSubmitBtnClick(e) {
   e.preventDefault();
 
-  onInputChange;
+  onInputChange();
 
   if (delay && step && amount) {
     for (let i = 1; i <= amount; i += 1) {
