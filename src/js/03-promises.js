@@ -20,10 +20,13 @@ function onInputChange(e) {
 
 function onSubmitBtnClick(e) {
   e.preventDefault();
+
   onInputChange;
+
   if (delay && step && amount) {
     for (let i = 1; i <= amount; i += 1) {
       position = i;
+
       createPromise(position, delay)
         .then(({ position, delay }) => {
           Notiflix.Notify.success(
@@ -35,6 +38,7 @@ function onSubmitBtnClick(e) {
             `❌ Rejected promise ${position} in ${delay}ms`
           );
         });
+
       delay += step;
     }
   }
@@ -43,6 +47,7 @@ function onSubmitBtnClick(e) {
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
+
     setTimeout(() => {
       if (shouldResolve) {
         resolve({ position, delay });
