@@ -10,19 +10,19 @@ let amount = 0;
 let position = 0;
 
 refs.form.addEventListener('submit', onSubmitBtnClick);
-refs.form.addEventListener('input', throttle(onInputChange, 500));
+refs.form.addEventListener('input', onInputChange, 500);
 
 function onInputChange(e) {
   delay = Number(e.currentTarget.delay.value);
   step = Number(e.currentTarget.step.value);
   amount = Number(e.currentTarget.amount.value);
+  return { delay, step, amount };
 }
 
 function onSubmitBtnClick(e) {
   e.preventDefault();
 
-  onInputChange();
-
+  let { delay, step, amount } = onInputChange(e);
   if (delay && step && amount) {
     for (let i = 1; i <= amount; i += 1) {
       position = i;
